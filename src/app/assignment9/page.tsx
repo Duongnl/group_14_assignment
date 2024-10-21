@@ -1,7 +1,7 @@
 const Assignment9 = () => {
     return (
         <>
-            Đây là bài tập tuần 9
+            Bài tập tuần 9
         </>
     )
 }
