@@ -22,7 +22,7 @@ const Sidebar = (props: IProps) => {
         <>
             <Offcanvas show={showSidebar} onHide={() => setShowSidebar(false)} className="sidebar" >
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title> <i className="fa-solid fa-book"></i> Bài tập</Offcanvas.Title>
+                    <Offcanvas.Title className='link-nhom14' > <i className="fa-solid fa-book"></i> Bài tập</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Link href={"/assignment1"} >
