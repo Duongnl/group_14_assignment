@@ -24,13 +24,6 @@ const Header = () => {
                         <i className="fa-solid fa-house"></i>  Nhóm 14
                         </Link>
                     </Navbar.Brand>
-
-
-
-
-
-
-
                 </Navbar>
             </Container>
 
