@@ -1,10 +1,12 @@
 import LoginForm from "@/components/assignment8/login"
-
+import "@/styles/login.css"
+// import { signIn } from "@/auth"
 const Assignment8 = () => {
+
     return (
         <>
-            Bài tập 8
-            <LoginForm/>
+            <LoginForm />
+         
         </>
     )
 }

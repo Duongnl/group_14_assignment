@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { Container } from "react-bootstrap";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const dynamic = "force-dynamic";
@@ -23,10 +24,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
         <Header />
-        <Container>
-          {children}
-        </Container>
-
+        {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"/>
+        {/* Same as */}
+        <ToastContainer />
       </body>
     </html>
   );
