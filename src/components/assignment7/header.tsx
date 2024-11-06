@@ -31,7 +31,7 @@ export default function HeaderAssignment7() {
     >
       <div className="fs-4">Hello {userData.firstName} {userData.lastName}</div>
         <div className="d-flex justify-content-between">
-      <Button variant={isDay?"primary":"outline-light"} onClick={toggleSidebar}>Show profile</Button>
+      <Button variant={isDay?"primary":"light"} onClick={toggleSidebar}>Show profile</Button>
       <Form>
         <Form.Check
           type="switch"
