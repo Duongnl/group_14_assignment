@@ -1,7 +1,7 @@
 const Assignment1 = () => {
     return (
         <>
-            Bài tập 1
+           HEllO WORLD
         </>
     )
 }
