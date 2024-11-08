@@ -5,10 +5,15 @@ import Image from 'next/image'
 import { Button, Form } from 'react-bootstrap';
 import { signIn } from "next-auth/react"
 import { toast } from 'react-toastify';
+import { useSession } from "next-auth/react"
+import LoginSuccess from './login-success';
+import Alert from 'react-bootstrap/Alert';
 const LoginForm = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [validation,setValidation] = useState<boolean>(false)
+    const [validation, setValidation] = useState<boolean>(false)
+    const { data: session } = useSession()
+    const [flag, setFlag] = useState<boolean>(true)
 
     const handleSubmit = async (event: any) => {
         const form = event.currentTarget;
@@ -21,8 +26,8 @@ const LoginForm = () => {
         });
 
         if (data?.error === "Configuration") {
-            toast.error("Sai mật khẩu tài khoản")
             console.log("Error")
+            setFlag(false)
         } else {
             toast.success("Đăng nhập thành công")
             console.log("Success")
@@ -33,12 +38,16 @@ const LoginForm = () => {
     const handleEmail = (e: string) => {
         const regex: RegExp = /^(?=.{1,64}@)[A-Za-z0-9_-]+(\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,})$/;
         if (regex.test(e)) {
-          setValidation(true)
+            setValidation(true)
         } else {
-          setValidation(false)
+            setValidation(false)
         }
         setEmail(e);
-      }
+        setFlag(true)
+    }
+
+
+
 
 
 
@@ -52,54 +61,72 @@ const LoginForm = () => {
                     fill // Tự động điều chỉnh kích thước
                 />
 
-                {/* Foreground Form */}
-                <Form className="shadow p-4 bg-white rounded container-login__Form" onSubmit={handleSubmit}>
-                    <div className="h4 mb-2 text-center">
-                        <Image className='user-image__Image'
-                            src="/images/user-login.png"
-                            alt="Picture of the author"
-                            width={70}
-                            height={70}
-                        />
-                    </div>
-                    <div className="h4 mb-2 text-center">Sign In</div>
+
+                {session?.user ? (<>
+                    <LoginSuccess
+                    userName = {session?.user?.email || ""}
+                    />
+
+                </>) : (<>
+                    {/* Foreground Form */}
+                    <Form className="shadow p-4 bg-white rounded container-login__Form" onSubmit={handleSubmit}>
+                        <div className="h4 mb-2 text-center">
+                            <Image className='user-image__Image'
+                                src="/images/user-login.png"
+                                alt="Picture of the author"
+                                width={70}
+                                height={70}
+                            />
+                        </div>
+                        <div className="h4 mb-2 text-center">Sign In</div>
+
+                        {flag == false && (<>
+                        <Alert key={"danger"} variant={"danger"}>
+                            Sai mật khẩu hoặc tài khoản
+                        </Alert>
+                    </>)}
 
 
-                    <Form.Group className="ctn-email__Form-Group" >
-                        <Form.Label> <span className='obligatory__Form-Label' >*</span> Email</Form.Label>
-                        <Form.Control
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => { handleEmail(e.target.value) }}
-                            isValid={validation}
-                            isInvalid={email != '' && !validation}
-                            required
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            {"Vui lòng nhập đúng định dạng Email"}
-                        </Form.Control.Feedback>
-                    </Form.Group>
+                        <Form.Group className="ctn-email__Form-Group" >
+                            <Form.Label> <span className='obligatory__Form-Label' >*</span> Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => { handleEmail(e.target.value) }}
+                                isValid={validation}
+                                isInvalid={email != '' && !validation}
+                                required
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                {"Vui lòng nhập đúng định dạng Email"}
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
 
-                    <Form.Group className='mt-4' >
-                        <Form.Label><span className='obligatory__Form-Label' >*</span> Password</Form.Label>
-                        <Form.Control
-                            name="password"
-                            type="text"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => { setPassword(e.target.value) }}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group className='mt-4 text-center' >
-                        <Button variant="primary" className='btn-login__Button'
-                            type='submit'
-                        >Login</Button>
-                    </Form.Group>
-                </Form>
+                        <Form.Group className='mt-4' >
+                            <Form.Label><span className='obligatory__Form-Label' >*</span> Password</Form.Label>
+                            <Form.Control
+                                name="password"
+                                type="text"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value); setFlag(true) }}
+                                required
+                            />
+                        </Form.Group>
+                        <Form.Group className='mt-4 text-center' >
+                            <Button variant="primary" className='btn-login__Button'
+                                type='submit'
+                            >Login</Button>
+                        </Form.Group>
+                    </Form>
+
+                </>)}
+
+
+
             </div>
 
         </>
