@@ -26,7 +26,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           password: password
         };
 
-        const res = await fetch("https://run.mocky.io/v3/031f8bf5-7d38-42ca-9d86-6885bf018579", {
+        const res = await fetch("http://localhost:8000/account", {
           method: "GET",
           headers: {
             'Accept': 'application/json' // Thêm tiêu đề để yêu cầu JSON
