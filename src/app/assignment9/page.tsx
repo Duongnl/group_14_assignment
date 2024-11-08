@@ -1,7 +1,9 @@
+import DeployUi from "@/components/assignment9/deploy-ui"
+
 const Assignment9 = () => {
     return (
         <>
-            Bài tập tuần 9
+            <DeployUi/>
         </>
     )
 }
