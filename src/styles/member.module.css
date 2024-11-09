@@ -1,0 +1,66 @@
+.cardContainer {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    gap: 26px;
+    margin-top: 50px ;
+    justify-content: center;
+}
+
+.title {
+    margin-top: 30px;
+    text-align: center;
+    color: #6998AB ;
+}
+
+.userCard {
+    background-image: url('/images/background-member.jpg');
+    text-align: center;
+    width: 17rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 8px solid #c0d3fe;
+}
+.cardImageIcon{
+    width: 35px;
+    height: 35px;
+}
+.cardBody{
+    margin-top: 15px;
+    border-top-left-radius:15px ;
+    border-top-right-radius:15px ;
+    background-color: #ffffff;
+}
+.userCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.cardImage {
+    padding: 20px 20px 0 20px;
+    border-radius: 50%;
+    height: 250px;
+}
+
+.cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.cardText {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.primaryButton {
+    background-color: #1f9984;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.primaryButton:hover {
+    background-color: #116767;
+}
