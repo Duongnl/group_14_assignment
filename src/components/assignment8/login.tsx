@@ -109,7 +109,7 @@ const LoginForm = () => {
                             <Form.Label><span className='obligatory__Form-Label' >*</span> Password</Form.Label>
                             <Form.Control
                                 name="password"
-                                type="text"
+                                type="password"
                                 placeholder="Password"
                                 value={password}
                                 onChange={(e) => { setPassword(e.target.value); setFlag(true) }}
