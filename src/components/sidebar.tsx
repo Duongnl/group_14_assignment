@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -16,6 +16,13 @@ const Sidebar = (props: IProps) => {
     const { showSidebar, setShowSidebar } = props;
 
     const pathname = usePathname();
+    const [name,setName] = useState<string[]>([pathname])
+    useEffect (() => {
+        setName([pathname]);
+    },[pathname])
+
+    console.log(name)
+    
 
 
     return (
@@ -28,7 +35,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment1"} >
                         <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment1") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment1") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 1
@@ -38,7 +45,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment2"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment2") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment2") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 2
@@ -48,7 +55,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment3"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment3") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment3") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 3
@@ -58,7 +65,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment4"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment4") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment4") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 4
@@ -68,7 +75,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment5"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment5") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment5") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 5
@@ -78,7 +85,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment6"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment6") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment6") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 6
@@ -88,7 +95,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment7"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment7") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment7") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 7
@@ -98,7 +105,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment8"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment8") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment8") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 8
@@ -108,7 +115,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment9"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment9") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment9") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 9
@@ -118,7 +125,7 @@ const Sidebar = (props: IProps) => {
                     <Link href={"/assignment10"} >
                     <Button
                             variant="light"
-                            className={`btn-sidebar ${pathname.includes("assignment10") ? "active" : ""}`}
+                            className={`btn-sidebar ${name.includes("/assignment10") ? "active" : ""}`}
                             onClick={() => setShowSidebar(false)}
                         >
                             Bài tập tuần 10
